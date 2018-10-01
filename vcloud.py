@@ -88,7 +88,7 @@ class Session(object):
         return Organization(self, el.getAttribute('href'))
 
     def organizations(self):
-        url = xpath.find('//Session/Link[@type="application/vnd.vmware.vcloud.orgList+xml"]', session.doc)[0].getAttribute('href')
+        url = xpath.find('//Session/Link[@type="application/vnd.vmware.vcloud.orgList+xml"]', self.doc)[0].getAttribute('href')
         doc = self.get(url)
         return dict([(org.getAttribute('name'),
                       Organization(self, org.getAttribute('href')))
